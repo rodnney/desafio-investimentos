@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "baseHref": "/desafio-investimentos/",
             "outputPath": "dist/desafio-investimentos",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -29,7 +30,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets",
+              "src/404.html"
             ],
             "styles": [
               "src/styles.scss"
@@ -88,7 +92,10 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/favicon.ico",
+              "src/assets",
+              "src/404.html"
             ],
             "styles": [
               "src/styles.scss"
