@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="header">
+    <h1>INVESTIMENTOS</h1>
+  </div>
+  
+  <div class="content">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">NOME</th>
+          <th scope="col">OBJETIVO</th>
+          <th scope="col">SALDO</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let investment of investments; let i = index" 
+            [class.disabled]="!isAvailableForRedemption(investment)"
+            (click)="navigateToDetail(investment)">
+          <td>{{ i + 1 }}</td>
+          <td>{{ investment.nome }}</td>
+          <td>{{ investment.objetivo }}</td>
+          <td>R$ {{ investment.saldoTotal | number:'1.2-2':'pt-BR' }}</td>
+          <td class="actions">
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="!isAvailableForRedemption(investment)">
+              <i class="bi bi-search"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="!isAvailableForRedemption(investment)">
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button class="btn btn-sm btn-outline-secondary" [disabled]="!isAvailableForRedemption(investment)">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

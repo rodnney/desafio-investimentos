@@ -1,0 +1,183 @@
+.page-bg {
+  min-height: 100vh;
+  background: #f5f6f7;
+}
+
+.header {
+  background: #45464e;
+  color: #e7e7e7;
+  padding: 0.75rem 0 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  .logo {
+    font-weight: 400;
+    opacity: 0.7;
+  }
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+  padding-top: 2rem;
+}
+
+.card-resgate {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px 0 rgba(44, 44, 44, 0.07);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  min-width: 700px;
+  max-width: 900px;
+}
+
+.card-header-resgate {
+  h2 {
+    font-size: 1.4rem;
+    color: #fff;
+    background: #45464e;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    margin: 0 0 1.5rem 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+  .resumo-investimento {
+    display: flex;
+    justify-content: space-between;
+    background: #f7f7fa;
+    border-radius: 4px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.5rem;
+    .resumo-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      min-width: 180px;
+      .material-icons {
+        font-size: 2.1rem;
+        color: #45464e;
+        background: #e8e8ea;
+        border-radius: 50%;
+        padding: 0.4rem;
+      }
+      .label {
+        color: #888;
+        font-size: 0.96rem;
+        font-weight: 500;
+      }
+      .valor {
+        color: #333;
+        font-size: 1.07rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.resgate-section {
+  h3 {
+    font-size: 1.15rem;
+    color: #45464e;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+}
+
+.custom-table-resgate {
+  width: 100%;
+  border-radius: 6px;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  background: #f9f9fb;
+  th {
+    background: #f5f6f7;
+    color: #888;
+    font-weight: 500;
+    padding: 0.7rem;
+    font-size: 0.98rem;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: center;
+  }
+  td {
+    background: #fff;
+    color: #333;
+    padding: 0.7rem;
+    font-size: 1rem;
+    border-bottom: 1px solid #ececec;
+    text-align: center;
+    vertical-align: middle;
+  }
+}
+
+.alerta-resgate {
+  color: #d32f2f;
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  .material-icons {
+    font-size: 1.2rem;
+    vertical-align: middle;
+    margin-right: 0.2rem;
+  }
+}
+
+.footer-resgate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0 0 0;
+  .valor-total {
+    font-size: 1.1rem;
+    color: #45464e;
+    font-weight: 500;
+  }
+  .botoes-resgate {
+    display: flex;
+    gap: 1.2rem;
+    .btn-voltar, .btn-confirmar {
+      padding: 0.7rem 2.4rem;
+      border-radius: 4px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-voltar {
+      background: #e0e0e0;
+      color: #45464e;
+      &:hover {
+        background: #bdbdbd;
+      }
+    }
+    .btn-confirmar {
+      background: #2962ff;
+      color: #fff;
+      &:hover {
+        background: #0039cb;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .card-resgate {
+    min-width: unset;
+    width: 100%;
+    padding: 1rem;
+  }
+  .card-header-resgate .resumo-investimento {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer-resgate {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}

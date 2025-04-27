@@ -1,0 +1,95 @@
+<div class="container-fluid">
+  <div class="header">
+    <h1>DADOS DO INVESTIMENTOS</h1>
+  </div>
+  
+  <div class="content" *ngIf="investment">
+    <div class="investment-info">
+      <div class="info-item">
+        <div class="icon">
+          <i class="bi bi-person-circle"></i>
+        </div>
+        <div class="info">
+          <h5>NOME</h5>
+          <p>{{ investment.nome }}</p>
+        </div>
+      </div>
+      
+      <div class="info-item">
+        <div class="icon">
+          <i class="bi bi-graph-up"></i>
+        </div>
+        <div class="info">
+          <h5>OBJETIVO</h5>
+          <p>{{ investment.objetivo }}</p>
+        </div>
+      </div>
+      
+      <div class="info-item">
+        <div class="icon">
+          <i class="bi bi-wallet2"></i>
+        </div>
+        <div class="info">
+          <h5>SALDO TOTAL</h5>
+          <p>R$ {{ investment.saldoTotal | number:'1.2-2':'pt-BR' }}</p>
+        </div>
+      </div>
+    </div>
+    
+    <h3 class="section-title">RESGATE</h3>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">AÇÃO</th>
+          <th scope="col">SALDO ACUMULADO</th>
+          <th scope="col">VALOR A RESGATAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let action of investment.acoes; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ action.nome }}</td>
+          <td>R$ {{ getActionBalance(action) | number:'1.2-2':'pt-BR' }}</td>
+          <td>
+            <div class="input-group">
+              <input 
+                type="text" 
+                class="form-control" 
+                placeholder="Valor a ser resgatado" 
+                [(ngModel)]="redemptionValues[action.id]"
+                (ngModelChange)="onRedemptionValueChange(action.id, $event, action)"
+                [class.is-invalid]="errors[action.id]"
+              >
+            </div>
+            <div *ngIf="errors[action.id]" class="error-message">
+              O valor máximo de resgate é R$ {{ getActionBalance(action) | number:'1.2-2':'pt-BR' }}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="total-value">
+      <p>VALOR TOTAL DO RESGATE: R$ {{ totalRedemptionValue | number:'1.2-2':'pt-BR' }}</p>
+    </div>
+    
+    <div class="actions">
+      <button class="btn btn-secondary" (click)="goBack()">VOLTAR</button>
+      <button class="btn btn-primary" (click)="confirmRedemption()">CONFIRMAR RESGATE</button>
+    </div>
+  </div>
+</div>
+
+<app-success-modal 
+  *ngIf="showSuccessModal" 
+  (closeModal)="closeSuccessModal()">
+</app-success-modal>
+
+<app-error-modal 
+  *ngIf="showErrorModal" 
+  [errorActions]="errorActions"
+  [investment]="investment"
+  (closeModal)="closeErrorModal()">
+</app-error-modal>

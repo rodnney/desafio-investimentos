@@ -1,0 +1,13 @@
+<div class="modal-backdrop"></div>
+<div class="modal-erro-container" role="dialog" aria-modal="true" tabindex="-1">
+  <div class="modal-erro-content">
+    <span class="material-icons erro-icone">error</span>
+    <h2 class="erro-titulo">Valores Inválidos</h2>
+    <ul class="erro-lista">
+      <li *ngFor="let erro of erros">
+        <span class="erro-acao">{{ erro.acao }}</span>: O valor máximo de resgate é <b>R$ {{ erro.saldo | moeda }}</b>
+      </li>
+    </ul>
+    <button class="btn-corrigir" (click)="$event.stopPropagation(); corrigir.emit()">CORRIGIR</button>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="modal-backdrop">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h4>Você preencheu um ou mais campos com valor acima do permitido:</h4>
+        <div *ngFor="let action of errorActions">
+          <p>{{ action.nome }}: O valor máximo de resgate é R$ {{ getActionBalance(action) | number:'1.2-2':'pt-BR' }}</p>
+        </div>
+        <div class="text-center mt-3">
+          <button class="btn btn-primary" (click)="onClose()">CORRIGIR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

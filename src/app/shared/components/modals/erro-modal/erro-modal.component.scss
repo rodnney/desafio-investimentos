@@ -1,0 +1,91 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+.modal-erro-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+.modal-erro-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  padding: 32px 24px 24px 24px;
+  min-width: 320px;
+  max-width: 90vw;
+  text-align: center;
+  position: relative;
+}
+
+.erro-icone {
+  color: #e53935;
+  font-size: 48px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.erro-titulo {
+  color: #e53935;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.erro-lista {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.erro-lista li {
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.erro-acao {
+  font-weight: 600;
+}
+
+.btn-corrigir {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(229,57,53,0.15);
+  transition: background 0.2s;
+}
+
+.btn-corrigir:hover, .btn-corrigir:focus {
+  background: #c62828;
+  outline: none;
+}
+
+@media (max-width: 600px) {
+  .modal-erro-content {
+    padding: 16px 8px 16px 8px;
+    min-width: 0;
+  }
+  .btn-corrigir {
+    width: 100%;
+    padding: 12px 0;
+  }
+}

@@ -1,0 +1,221 @@
+.page-bg {
+  min-height: 100vh;
+  background: #f5f6f7;
+}
+
+.header {
+  background: #45464e;
+  color: #e7e7e7;
+  padding: 0.75rem 0 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  .logo {
+    font-weight: 400;
+    opacity: 0.7;
+  }
+}
+
+.main-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+  padding-top: 2rem;
+}
+
+.card-resgate {
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 12px 0 rgba(44, 44, 44, 0.07);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  min-width: 700px;
+  max-width: 900px;
+}
+
+.card-header-resgate {
+  h2 {
+    font-size: 1.4rem;
+    color: #fff;
+    background: #45464e;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    margin: 0 0 1.5rem 0;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+}
+
+.resumo-investimento.resumo-form {
+  display: flex;
+  justify-content: space-between;
+  background: #f7f7fa;
+  border-radius: 4px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.5rem;
+  .resumo-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-width: 180px;
+    .material-icons {
+      font-size: 2.1rem;
+      color: #45464e;
+      background: #e8e8ea;
+      border-radius: 50%;
+      padding: 0.4rem;
+    }
+    .label {
+      color: #888;
+      font-size: 0.96rem;
+      font-weight: 500;
+    }
+    input {
+      color: #333;
+      font-size: 1.07rem;
+      font-weight: 600;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 4px 8px;
+      background: #fff;
+      width: 170px;
+      margin-top: 0.2rem;
+    }
+    input[readonly], input[disabled] {
+      background: #f5f6f7;
+      color: #888;
+    }
+  }
+}
+
+.acoes-section {
+  h3 {
+    font-size: 1.15rem;
+    color: #45464e;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+  }
+  .acoes-table-header, .acoes-table-row {
+    display: grid;
+    grid-template-columns: 40px 1fr 80px 50px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+  }
+  .acoes-table-header {
+    font-weight: 500;
+    color: #888;
+    background: #f5f6f7;
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    font-size: 0.98rem;
+  }
+  .acoes-table-row {
+    background: #fff;
+    border-bottom: 1px solid #ececec;
+    input {
+      font-size: 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 4px 8px;
+      background: #fff;
+      width: 100%;
+    }
+    input[readonly], input[disabled] {
+      background: #f5f6f7;
+      color: #888;
+    }
+    .btn-remover {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      color: #d32f2f;
+      .material-icons {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  .btn-adicionar {
+    margin-top: 0.6rem;
+    background: #e0e0e0;
+    color: #45464e;
+    border: none;
+    border-radius: 4px;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    .material-icons {
+      font-size: 1.1rem;
+    }
+    &:hover {
+      background: #bdbdbd;
+    }
+  }
+}
+
+.alerta-resgate {
+  color: #d32f2f;
+  font-size: 0.95rem;
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  .material-icons {
+    font-size: 1.2rem;
+    vertical-align: middle;
+    margin-right: 0.2rem;
+  }
+}
+
+.footer-resgate {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 1.5rem 0 0 0;
+  gap: 1.2rem;
+  .btn-voltar, .btn-confirmar {
+    padding: 0.7rem 2.4rem;
+    border-radius: 4px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-voltar {
+    background: #e0e0e0;
+    color: #45464e;
+    &:hover {
+      background: #bdbdbd;
+    }
+  }
+  .btn-confirmar {
+    background: #2962ff;
+    color: #fff;
+    &:hover {
+      background: #0039cb;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .card-resgate {
+    min-width: unset;
+    width: 100%;
+    padding: 1rem;
+  }
+  .resumo-investimento.resumo-form {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .footer-resgate {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}

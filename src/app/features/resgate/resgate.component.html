@@ -1,0 +1,84 @@
+<div class="page-bg">
+  <header class="header">
+    <span class="logo">Dados do Investidor</span>
+  </header>
+  <section class="main-content">
+    <div class="card-resgate">
+      <div class="card-header-resgate">
+        <h2>DADOS DO INVESTIMENTOS</h2>
+        <div class="resumo-investimento">
+          <div class="resumo-item">
+            <span class="material-icons">person</span>
+            <div>
+              <div class="label">NOME</div>
+              <div class="valor">{{ investimento?.nome }}</div>
+            </div>
+          </div>
+          <div class="resumo-item">
+            <span class="material-icons">trending_up</span>
+            <div>
+              <div class="label">OBJETIVO</div>
+              <div class="valor">{{ investimento?.objetivo }}</div>
+            </div>
+          </div>
+          <div class="resumo-item">
+            <span class="material-icons">account_balance_wallet</span>
+            <div>
+              <div class="label">SALDO TOTAL</div>
+              <div class="valor">{{ (investimento?.saldoTotal ?? 0) | moeda }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="resgate-section">
+        <h3>RESGATE</h3>
+        <form>
+          <table class="custom-table-resgate">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>AÇÃO</th>
+                <th>SALDO ACUMULADO</th>
+                <th>VALOR A RESGATAR</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let acao of investimento?.acoes; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ acao.nome }}</td>
+                <td>{{ getSaldoAcumulado(acao) | moeda }}</td>
+                <td>
+                  <input type="text" currencyInput [(ngModel)]="valorResgate[acao.id]" name="resgate-{{acao.id}}" (ngModelChange)="onValorResgateChange(acao.id, $event)">
+                  <div *ngIf="validationErrors.get(acao.id)" class="alerta-resgate">
+                    <span class="material-icons">error</span>
+                    O valor máximo de resgate é {{ getSaldoAcumulado(acao) | moeda }}
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="footer-resgate">
+            <div class="valor-total">
+              VALOR TOTAL DO RESGATE: <b>{{ valorTotalResgate | moeda }}</b>
+            </div>
+            <div class="botoes-resgate">
+              <button type="button" class="btn-voltar" (click)="router.navigate(['/investimentos'])">VOLTAR</button>
+              <button type="button" class="btn-confirmar" [disabled]="valorTotalResgate === 0" (click)="confirmarResgate()">CONFIRMAR RESGATE</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Modal de Erro -->
+      <!-- Modal de Erro -->
+      <app-erro-modal *ngIf="showErrorModal"
+        [erros]="errorActions"
+        (corrigir)="onCorrigirErro()">
+      </app-erro-modal>
+      <!-- Modal de Sucesso -->
+      <app-sucesso-modal *ngIf="showSuccessModal"
+        (close)="onNovoResgate()">
+      </app-sucesso-modal>
+    </div>
+  </section>
+</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

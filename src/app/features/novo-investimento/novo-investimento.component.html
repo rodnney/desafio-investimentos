@@ -1,0 +1,65 @@
+<div class="page-bg">
+  <header class="header">
+    <span class="logo">{{ modo === 'novo' ? 'novo investimento' : modo === 'editar' ? 'editar investimento' : 'visualizar investimento' }}</span>
+  </header>
+  <section class="main-content">
+    <div class="card-resgate">
+      <div class="card-header-resgate">
+        <h2>DADOS DO INVESTIMENTO</h2>
+      </div>
+      <form [formGroup]="investimentoForm" (ngSubmit)="salvar()">
+        <div class="resumo-investimento resumo-form">
+          <div class="resumo-item">
+            <span class="material-icons">person</span>
+            <div>
+              <div class="label">NOME</div>
+              <input formControlName="nome" [readonly]="modo==='visualizar'" [disabled]="modo==='visualizar'" />
+            </div>
+          </div>
+          <div class="resumo-item">
+            <span class="material-icons">trending_up</span>
+            <div>
+              <div class="label">OBJETIVO</div>
+              <input formControlName="objetivo" [readonly]="modo==='visualizar'" [disabled]="modo==='visualizar'" />
+            </div>
+          </div>
+          <div class="resumo-item">
+            <span class="material-icons">account_balance_wallet</span>
+            <div>
+              <div class="label">SALDO TOTAL</div>
+              <input formControlName="saldoTotal" type="text" currencyInput [readonly]="modo==='visualizar'" [disabled]="modo==='visualizar'" />
+            </div>
+          </div>
+        </div>
+        <div class="acoes-section">
+          <h3>AÇÕES</h3>
+          <div formArrayName="acoes">
+            <div class="acoes-table-header">
+              <span>#</span>
+              <span>Nome da ação</span>
+              <span>%</span>
+              <span *ngIf="modo!=='visualizar'"></span>
+            </div>
+            <div *ngFor="let acao of acoes.controls; let i = index" [formGroupName]="i" class="acoes-table-row">
+              <span>{{ i + 1 }}</span>
+              <input formControlName="nome" placeholder="Nome da ação" [readonly]="modo==='visualizar'" [disabled]="modo==='visualizar'" />
+              <input formControlName="percentual" type="number" placeholder="%" (input)="validarPercentual()" [readonly]="modo==='visualizar'" [disabled]="modo==='visualizar'" />
+              <button *ngIf="modo!=='visualizar'" type="button" class="btn-remover" (click)="removerAcao(i)"><span class="material-icons">remove_circle</span></button>
+            </div>
+            <button *ngIf="modo!=='visualizar'" type="button" class="btn-adicionar" (click)="adicionarAcao()"><span class="material-icons">add</span> Adicionar Ação</button>
+          </div>
+          <div *ngIf="erroPercentual" class="alerta-resgate">
+            <span class="material-icons">error</span>
+            A soma dos percentuais deve ser 100%
+          </div>
+        </div>
+        <div class="footer-resgate">
+          <button *ngIf="modo==='novo'" type="submit" class="btn-confirmar">SALVAR</button>
+          <button *ngIf="modo==='editar'" type="submit" class="btn-confirmar">SALVAR ALTERAÇÕES</button>
+          <button type="button" class="btn-voltar" (click)="cancelar()">CANCELAR</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

@@ -1,0 +1,44 @@
+<div class="page-bg">
+  <header class="header">
+    <span class="logo">home</span>
+  </header>
+  <section class="main-content">
+    <div class="card">
+      <div class="card-header">
+        <h2>INVESTIMENTOS</h2>
+        <button class="novo-btn" (click)="onNovoInvestimento()">
+          <span class="material-icons">add</span> Novo Investimento
+        </button>
+      </div>
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>NOME</th>
+            <th>OBJETIVO</th>
+            <th>SALDO</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let investimento of investimentos; let i = index"
+    [class.disabled]="!podeResgatar(investimento)"
+    (click)="podeResgatar(investimento) && onResgatar(investimento)">
+
+            <td>{{ i + 1 }}</td>
+            <td>{{ investimento.nome }}</td>
+            <td>{{ investimento.objetivo }}</td>
+            <td>{{ investimento.saldoTotal | moeda }}</td>
+            <td class="actions">
+              <button class="icon-btn" title="Visualizar" (click)="$event.stopPropagation(); onVisualizar(investimento)"><span class="material-icons">search</span></button>
+              <button class="icon-btn" title="Editar" (click)="$event.stopPropagation(); onEditar(investimento)"><span class="material-icons">edit</span></button>
+              <button class="icon-btn" title="Excluir" (click)="$event.stopPropagation(); onExcluir(investimento)"><span class="material-icons">delete</span></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+<!-- Material Icons CDN -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
