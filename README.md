@@ -45,3 +45,14 @@ ng test
 
 ## Observações
 
+## ajuste para  deploy
+ng serve
+git add .
+git commit -m "Descreva sua alteração"
+git push origin main
+git checkout main
+ng build --configuration production
+cd dist/desafio-investimentos/browser
+git add .
+git commit -m "Deploy: atualização do site"
+git push origin gh-pages --force

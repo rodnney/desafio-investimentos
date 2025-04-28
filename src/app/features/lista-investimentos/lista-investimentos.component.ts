@@ -38,7 +38,6 @@ export class ListaInvestimentosComponent implements OnInit {
   onExcluir(investimento: Investimento): void {
     if (confirm('Deseja realmente excluir este investimento?')) {
       this.investimentos = this.investimentos.filter(i => i !== investimento);
-      // Aqui você pode também chamar o serviço para remover do backend
     }
   }
 

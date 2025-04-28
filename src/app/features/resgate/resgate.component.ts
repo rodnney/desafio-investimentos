@@ -48,7 +48,6 @@ export class ResgateComponent implements OnInit {
         if (!this.investimento) {
           this.router.navigate(['/investimentos']);
         } else {
-          // Inicializa os valores de resgate como zero
           this.investimento.acoes.forEach(acao => {
             this.valorResgate[acao.id] = 0;
           });

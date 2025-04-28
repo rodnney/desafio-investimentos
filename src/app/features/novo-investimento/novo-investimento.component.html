@@ -32,21 +32,21 @@
           </div>
         </div>
         <div class="acoes-section">
-          <h3>AÇÕES</h3>
+          <h3>INVESTIMENTOS</h3>
           <div formArrayName="acoes">
             <div class="acoes-table-header">
               <span>#</span>
-              <span>Nome da ação</span>
+              <span>Nome do investimento</span>
               <span>%</span>
               <span *ngIf="modo!=='visualizar'"></span>
             </div>
             <div *ngFor="let acao of acoes.controls; let i = index" [formGroupName]="i" class="acoes-table-row">
               <span>{{ i + 1 }}</span>
-              <input formControlName="nome" placeholder="Nome da ação" [readonly]="modo==='visualizar'" [disabled]="modo==='visualizar'" />
+              <input formControlName="nome" placeholder="Nome do investimento" [readonly]="modo==='visualizar'" [disabled]="modo==='visualizar'" />
               <input formControlName="percentual" type="number" placeholder="%" (input)="validarPercentual()" [readonly]="modo==='visualizar'" [disabled]="modo==='visualizar'" />
               <button *ngIf="modo!=='visualizar'" type="button" class="btn-remover" (click)="removerAcao(i)"><span class="material-icons">remove_circle</span></button>
             </div>
-            <button *ngIf="modo!=='visualizar'" type="button" class="btn-adicionar" (click)="adicionarAcao()"><span class="material-icons">add</span> Adicionar Ação</button>
+            <button *ngIf="modo!=='visualizar'" type="button" class="btn-adicionar" (click)="adicionarAcao()"><span class="material-icons">add</span> Adicionar Investimento</button>
           </div>
           <div *ngIf="erroPercentual" class="alerta-resgate">
             <span class="material-icons">error</span>
