@@ -56,3 +56,6 @@ cd dist/desafio-investimentos/browser
 git add .
 git commit -m "Deploy: atualização do site"
 git push origin gh-pages --force
+cd ..\..\..
+
+https://rodnney.github.io/desafio-investimentos/
